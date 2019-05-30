@@ -5,14 +5,22 @@ $(document).ready(function(){
         $(".parentContainer").append("<div style='border:2px solid red;height:70px;width:220px'></div>");   
     });
 
-    var htmlFragment = $("<div style='border:2px solid black;width:280px;height:60px'>"+
+    var htmlFragment = ("<div style='width:280px;height:60px;margin: auto'>"+
     "<pre>"+
-     "<input type='checkbox' id='#elementInTodoList'></input><label for='elementInTodoList'> </label> <input type='text' id='elementInTodoList'></input> <button type='button'>Delete</button>"+
+     "<input type='checkbox' onchange='addToCompletedSection(this)' id='#elementInTodoList'></input><label for='elementInTodoList'> </label> <input type='text' id='elementInTodoList'></input> <button type='button'>Delete</button>"+
      "</pre>"+
-    "</div>");
+    "</div>"+
+    "<hr>");
 
     $("#addItem").on('click',function(){
-        console.log("Kushagra");
-        $("#todoParent").append(htmlFragment);
+        $("#todoParent").append($(htmlFragment));
     });
+
+    function addToCompletedSection(obj){
+        console.log("Kushagra");
+        if ($(obj).is(':checked')) {
+            console.log("Kushagra");
+            $("#completed").append($(htmlFragment));
+        }
+    }
 });
